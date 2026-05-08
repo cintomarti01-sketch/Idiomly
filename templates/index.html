@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Endevina l'Idioma!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream:   #f5f0e8;
+      --ink:     #1a1208;
+      --rust:    #c0431b;
+      --gold:    #d4a017;
+      --sage:    #4a6741;
+      --sand:    #e8d9be;
+      --stamp:   #8b3a3a;
+      --paper:   #ede5d0;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background-color: var(--cream);
+      background-image:
+        radial-gradient(ellipse at 20% 20%, rgba(212,160,23,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(192,67,27,0.06) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f5f0e8'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23d4a01720'/%3E%3C/svg%3E");
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--ink);
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      animation: fadeDown 0.7s ease both;
+    }
+    header .eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 0.4rem;
+    }
+    header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 6vw, 3.8rem);
+      font-weight: 900;
+      line-height: 1.05;
+      color: var(--ink);
+    }
+    header h1 em {
+      font-style: italic;
+      color: var(--rust);
+    }
+    header .subtitle {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: #6b5c3e;
+      font-weight: 300;
+    }
+
+    /* ── SCORE BAR ── */
+    .score-bar {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      color: #7a6545;
+      animation: fadeDown 0.7s 0.1s ease both;
+    }
+    .score-bar span strong {
+      font-size: 1.3rem;
+      color: var(--ink);
+      font-family: 'Playfair Display', serif;
+    }
+    .score-bar .sep { color: var(--sand); }
+
+    /* ── POSTCARD ── */
+    .postcard {
+      width: 100%;
+      max-width: 680px;
+      background: var(--paper);
+      border: 1px solid #c9b99a;
+      border-radius: 2px;
+      box-shadow: 4px 4px 0 #c9b99a, 8px 8px 0 #e0d2b8;
+      padding: 2.5rem 2.8rem;
+      position: relative;
+      animation: fadeUp 0.6s 0.2s ease both;
+      overflow: hidden;
+    }
+    .postcard::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: repeating-linear-gradient(90deg, var(--rust) 0 30px, var(--gold) 30px 60px, var(--sage) 60px 90px, var(--rust) 90px 120px);
+    }
+
+    /* stamp */
+    .stamp {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.8rem;
+      width: 72px;
+      height: 72px;
+      border: 3px solid var(--stamp);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      background: white;
+      box-shadow: inset 0 0 0 2px white, inset 0 0 0 4px var(--stamp);
+      border-radius: 2px;
+      transition: transform 0.4s ease;
+    }
+    .stamp .stamp-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.5rem;
+      letter-spacing: 0.08em;
+      color: var(--stamp);
+      text-transform: uppercase;
+      margin-top: 0.15rem;
+    }
+
+    .language-badge {
+      display: inline-block;
+      background: var(--rust);
+      color: white;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.7rem;
+      border-radius: 1px;
+      margin-bottom: 1.2rem;
+    }
+
+    .phrase-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-style: italic;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      padding-right: 5rem;
+    }
+
+    .translation-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+    .translation-icon {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-top: 0.05rem;
+      flex-shrink: 0;
+    }
+    .translation-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #9a845a;
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+    .translation-text {
+      font-size: 1rem;
+      color: #4a3c20;
+      font-style: italic;
+    }
+
+    .hint-row {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px dashed #c9b99a;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .hint-text {
+      font-size: 0.82rem;
+      color: #7a6545;
+      line-height: 1.5;
+    }
+
+    /* ── FORM ── */
+    .guess-section {
+      width: 100%;
+      max-width: 680px;
+      margin-top: 1.8rem;
+      animation: fadeUp 0.6s 0.35s ease both;
+    }
+
+    .guess-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--rust);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    #answer-input {
+      flex: 1;
+      padding: 0.85rem 1.1rem;
+      border: 2px solid #c9b99a;
+      border-radius: 2px;
+      background: white;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    #answer-input:focus {
+      border-color: var(--rust);
+      box-shadow: 3px 3px 0 #c0431b30;
+    }
+    #answer-input::placeholder { color: #c0b090; font-style: italic; }
+
+    #submit-btn {
+      padding: 0.85rem 1.6rem;
+      background: var(--ink);
+      color: var(--cream);
+      border: none;
+      border-radius: 2px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+      box-shadow: 3px 3px 0 #c9b99a;
+    }
+    #submit-btn:hover {
+      background: var(--rust);
+      box-shadow: 3px 3px 0 #8b3a3a;
+    }
+    #submit-btn:active { transform: translate(1px,1px); box-shadow: 1px 1px 0 #c9b99a; }
+
+    /* ── RESULT ── */
+    #result-box {
+      width: 100%;
+      max-width: 680px;
+      margin-top: 1rem;
+      padding: 1.2rem 1.5rem;
+      border-radius: 2px;
+      display: none;
+      animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    #result-box.correct {
+      background: #e8f3e4;
+      border: 2px solid var(--sage);
+    }
+    #result-box.incorrect {
+      background: #faeae4;
+      border: 2px solid var(--rust);
+    }
+    .result-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .correct .result-title { color: var(--sage); }
+    .incorrect .result-title { color: var(--rust); }
+    .result-detail {
+      font-size: 0.88rem;
+      color: #4a3c20;
+    }
+
+    #next-btn {
+      display: none;
+      margin-top: 1.2rem;
+      padding: 0.75rem 2rem;
+      background: transparent;
+      border: 2px solid var(--ink);
+      border-radius: 2px;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      color: var(--ink);
+      transition: background 0.2s, color 0.2s;
+      box-shadow: 3px 3px 0 #c9b99a;
+      animation: fadeUp 0.4s 0.2s ease both;
+    }
+    #next-btn:hover { background: var(--ink); color: var(--cream); }
+
+    /* ── LOADING ── */
+    .loading-card {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    .spinner {
+      display: inline-block;
+      width: 18px; height: 18px;
+      border: 2px solid #c9b99a;
+      border-top-color: var(--rust);
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      vertical-align: middle;
+      margin-right: 0.4rem;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity:0; transform: translateY(-16px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity:0; transform: translateY(16px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+    @keyframes popIn {
+      from { opacity:0; transform: scale(0.92); }
+      to   { opacity:1; transform: scale(1); }
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    @keyframes stampIn {
+      0%   { transform: rotate(-8deg) scale(1.4); opacity:0; }
+      60%  { transform: rotate(2deg) scale(0.96); opacity:1; }
+      100% { transform: rotate(0deg) scale(1); opacity:1; }
+    }
+    .stamp-animate { animation: stampIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
+
+    footer {
+      margin-top: 3rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: #b09a72;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">☞ El joc de les llengües del món</p>
+  <h1>Endevina <em>l'Idioma!</em></h1>
+  <p class="subtitle">Una frase. Un país. Quants en saps?</p>
+</header>
+
+<div class="score-bar">
+  <span>Encerts <strong id="score-correct">0</strong></span>
+  <span class="sep">|</span>
+  <span>Errors <strong id="score-wrong">0</strong></span>
+  <span class="sep">|</span>
+  <span>Ronda <strong id="score-round">1</strong></span>
+</div>
+
+<div class="postcard" id="postcard">
+
+  <p class="phrase-text" id="phrase-text">…</p>
+
+  <div class="translation-row">
+    <span class="translation-icon">✦</span>
+    <div>
+      <span class="translation-label">En català</span>
+      <span class="translation-text" id="catalan-text">…</span>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem; padding-top:1rem; border-top:1px dashed #c9b99a;">
+    <button id="hint-btn" onclick="showHint()" style="background:transparent; border:1.5px dashed #c9b99a; padding:0.3rem 0.9rem; font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:#9a845a; cursor:pointer; border-radius:2px;">✎ Pista</button>
+    <p class="hint-text" id="hint-text" style="display:none; margin-top:0.6rem;"></p>
+  </div>
+</div>
+
+<div class="guess-section">
+  <label class="guess-label" for="answer-input">De quin país és aquest idioma?</label>
+  <div class="input-row">
+    <input id="answer-input" type="text" placeholder="Escriu el nom del país…" autocomplete="off"/>
+    <button id="submit-btn" onclick="submitAnswer()">Comprovar</button>
+  </div>
+  <div style="display:flex; align-items:center; gap:1rem; margin-top:0.7rem;">
+    <div id="attempts-display" style="font-size:1.1rem; letter-spacing:0.3rem;"></div>
+    <p id="feedback-msg" style="font-family:'DM Mono',monospace; font-size:0.75rem; margin:0;"></p>
+  </div>
+</div>
+
+<div id="result-box">
+  <p class="result-title" id="result-title"></p>
+  <p class="result-detail" id="result-detail"></p>
+</div>
+
+<button id="next-btn" onclick="loadPhrase()">Següent frase →</button>
+
+<footer>fet amb ♥ per aprendre idiomes · les respostes accepten variants i diacrítics opcionals</footer>
+
+<script>
+  let currentCountry = '';
+  let answered = false;
+  let correct = 0;
+  let wrong = 0;
+  let round = 1;
+  let attemptsLeft = 5;
+
+  function showHint() {
+    document.getElementById('hint-text').style.display = 'block';
+    document.getElementById('hint-btn').style.display = 'none';
+  }
+
+  function setAttemptsDisplay() {
+    const el = document.getElementById('attempts-display');
+    const used = 5 - attemptsLeft;
+    el.innerHTML = Array.from({length: 5}, (_, i) =>
+      i < used
+        ? '<span style="color:#c0431b;">✕</span>'
+        : '<span style="color:#c9b99a;">○</span>'
+    ).join(' ');
+  }
+
+  async function loadPhrase() {
+    answered = false;
+    attemptsLeft = 5;
+    document.getElementById('result-box').style.display = 'none';
+    document.getElementById('next-btn').style.display = 'none';
+    document.getElementById('answer-input').value = '';
+    document.getElementById('answer-input').disabled = false;
+    document.getElementById('submit-btn').disabled = false;
+    document.getElementById('feedback-msg').textContent = '';
+    document.getElementById('postcard').classList.add('loading-card');
+
+    const res = await fetch('/api/phrase');
+    const data = await res.json();
+    currentCountry = data.country;
+
+    document.getElementById('phrase-text').textContent = data.phrase;
+    document.getElementById('catalan-text').textContent = data.catalan_translation;
+    document.getElementById('hint-text').textContent = '🗺 ' + data.hint;
+
+    document.getElementById('postcard').classList.remove('loading-card');
+    document.getElementById('hint-text').style.display = 'none';
+    document.getElementById('hint-btn').style.display = 'inline-block';
+    setAttemptsDisplay();
+    document.getElementById('answer-input').focus();
+  }
+
+  function endRound(wasCorrect, correctCountry) {
+    answered = true;
+    document.getElementById('answer-input').disabled = true;
+    document.getElementById('submit-btn').disabled = true;
+    document.getElementById('feedback-msg').textContent = '';
+
+    const box = document.getElementById('result-box');
+    box.className = wasCorrect ? 'correct' : 'incorrect';
+    box.style.display = 'block';
+
+    if (wasCorrect) {
+      document.getElementById('result-title').textContent = '✓ Excel·lent! Has encertat!';
+      document.getElementById('result-detail').textContent =
+        `Sí! La frase era de ${correctCountry}. Continua així!`;
+      correct++;
+    } else {
+      document.getElementById('result-title').textContent = '✗ Sense intents!';
+      document.getElementById('result-detail').textContent =
+        `La resposta correcta era: ${correctCountry}.`;
+      wrong++;
+    }
+
+    document.getElementById('score-correct').textContent = correct;
+    document.getElementById('score-wrong').textContent = wrong;
+    document.getElementById('score-round').textContent = ++round;
+    document.getElementById('next-btn').style.display = 'inline-block';
+  }
+
+  async function submitAnswer() {
+    if (answered) return;
+    const answer = document.getElementById('answer-input').value.trim();
+    if (!answer) return;
+
+    const res = await fetch('/api/check', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ answer, country: currentCountry })
+    });
+    const data = await res.json();
+    const feedback = document.getElementById('feedback-msg');
+
+    if (!data.valid) {
+      feedback.style.color = '#9a845a';
+      feedback.textContent = '⚠ Això no sembla un país vàlid. Prova-ho de nou (no compta com a intent)!';
+      document.getElementById('answer-input').select();
+      return;
+    }
+
+    if (data.correct) {
+      endRound(true, data.correct_country);
+      return;
+    }
+
+    attemptsLeft--;
+    setAttemptsDisplay();
+    document.getElementById('answer-input').value = '';
+
+    if (attemptsLeft === 0) {
+      endRound(false, data.correct_country);
+    } else {
+      feedback.style.color = '#c0431b';
+      feedback.textContent = `✗ No és "${answer}". Et queden ${attemptsLeft} intent${attemptsLeft === 1 ? '' : 's'}!`;
+      document.getElementById('answer-input').focus();
+    }
+  }
+
+  document.getElementById('answer-input').addEventListener('keydown', e => {
+    if (e.key === 'Enter') submitAnswer();
+  });
+
+  loadPhrase();
+</script>
+</body>
+</html>
