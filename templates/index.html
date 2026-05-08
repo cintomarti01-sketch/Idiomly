@@ -348,6 +348,38 @@
     }
     .stamp-animate { animation: stampIn 0.5s cubic-bezier(0.34,1.56,0.64,1) both; }
 
+    .prog-hint {
+      border-top: 1px dashed #c9b99a;
+      padding: 0.75rem 0 0.1rem;
+      margin-top: 0.75rem;
+      animation: fadeUp 0.4s ease both;
+    }
+    .prog-hint-header {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #9a845a;
+      margin-bottom: 0.3rem;
+    }
+    .prog-hint-value {
+      font-size: 0.9rem;
+      color: #4a3c20;
+    }
+    .prog-hint-value.flag-value {
+      font-size: 2.5rem;
+      line-height: 1;
+    }
+    .prog-hint-value img {
+      max-height: 90px;
+      max-width: 180px;
+      object-fit: contain;
+      opacity: 0.85;
+      filter: grayscale(20%);
+      margin-top: 0.2rem;
+      display: block;
+    }
+
     footer {
       margin-top: 3rem;
       font-family: 'DM Mono', monospace;
@@ -386,10 +418,7 @@
     </div>
   </div>
 
-  <div style="margin-top:1rem; padding-top:1rem; border-top:1px dashed #c9b99a;">
-    <button id="hint-btn" onclick="showHint()" style="background:transparent; border:1.5px dashed #c9b99a; padding:0.3rem 0.9rem; font-family:'DM Mono',monospace; font-size:0.7rem; letter-spacing:0.12em; text-transform:uppercase; color:#9a845a; cursor:pointer; border-radius:2px;">✎ Pista</button>
-    <p class="hint-text" id="hint-text" style="display:none; margin-top:0.6rem;"></p>
-  </div>
+  <div id="hints-area" style="margin-top:1rem;"></div>
 </div>
 
 <div class="guess-section">
@@ -415,16 +444,20 @@
 
 <script>
   let currentCountry = '';
+  let currentHints = [];
+  let failedAttempts = 0;
   let answered = false;
   let correct = 0;
   let wrong = 0;
   let round = 1;
   let attemptsLeft = 5;
 
-  function showHint() {
-    document.getElementById('hint-text').style.display = 'block';
-    document.getElementById('hint-btn').style.display = 'none';
-  }
+  const HINT_LABELS = {
+    population: '👥 Població',
+    outline:    '🗺️ Contorn del país',
+    continent:  '🌍 Continent',
+    flag:       '🚩 Bandera',
+  };
 
   function setAttemptsDisplay() {
     const el = document.getElementById('attempts-display');
@@ -436,9 +469,52 @@
     ).join(' ');
   }
 
+  function revealHint(index) {
+    if (index >= currentHints.length) return;
+    const hint = currentHints[index];
+    const area = document.getElementById('hints-area');
+
+    const wrapper = document.createElement('div');
+    wrapper.className = 'prog-hint';
+
+    const header = document.createElement('div');
+    header.className = 'prog-hint-header';
+    header.textContent = HINT_LABELS[hint.type] || hint.label;
+    wrapper.appendChild(header);
+
+    const valueEl = document.createElement('div');
+    valueEl.className = 'prog-hint-value';
+
+    if (hint.type === 'outline') {
+      const img = document.createElement('img');
+      img.src = hint.value;
+      img.alt = 'Contorn del país';
+      valueEl.appendChild(img);
+    } else if (hint.type === 'flag') {
+      valueEl.classList.add('flag-value');
+      const img = document.createElement('img');
+      img.src = hint.value;
+      img.alt = 'Bandera del país';
+      img.style.maxHeight = '80px';
+      img.style.maxWidth = '140px';
+      img.style.borderRadius = '2px';
+      img.style.boxShadow = '1px 1px 4px rgba(0,0,0,0.2)';
+      img.style.filter = 'none';
+      valueEl.appendChild(img);
+    } else {
+      valueEl.textContent = hint.value;
+    }
+
+    wrapper.appendChild(valueEl);
+    area.appendChild(wrapper);
+  }
+
   async function loadPhrase() {
     answered = false;
     attemptsLeft = 5;
+    failedAttempts = 0;
+    currentHints = [];
+    document.getElementById('hints-area').innerHTML = '';
     document.getElementById('result-box').style.display = 'none';
     document.getElementById('next-btn').style.display = 'none';
     document.getElementById('answer-input').value = '';
@@ -448,16 +524,15 @@
     document.getElementById('postcard').classList.add('loading-card');
 
     const res = await fetch('/api/phrase');
+    
     const data = await res.json();
     currentCountry = data.country;
+    currentHints = data.hints || [];
 
     document.getElementById('phrase-text').textContent = data.phrase;
     document.getElementById('catalan-text').textContent = data.catalan_translation;
-    document.getElementById('hint-text').textContent = '🗺 ' + data.hint;
 
     document.getElementById('postcard').classList.remove('loading-card');
-    document.getElementById('hint-text').style.display = 'none';
-    document.getElementById('hint-btn').style.display = 'inline-block';
     setAttemptsDisplay();
     document.getElementById('answer-input').focus();
   }
@@ -496,35 +571,59 @@
     if (!answer) return;
 
     const res = await fetch('/api/check', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ answer, country: currentCountry })
-    });
-    const data = await res.json();
-    const feedback = document.getElementById('feedback-msg');
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ 
+    answer: answer, 
+    country: currentCountry, 
+    attempt: failedAttempts 
+  })
+});
 
-    if (!data.valid) {
-      feedback.style.color = '#9a845a';
-      feedback.textContent = '⚠ Això no sembla un país vàlid. Prova-ho de nou (no compta com a intent)!';
-      document.getElementById('answer-input').select();
-      return;
+  const data = await res.json();
+  const feedback = document.getElementById('feedback-msg');
+
+  // 1. Si el país no és vàlid (error de l'usuari en escriure)
+  if (!data.valid) {
+    feedback.style.color = '#9a845a';
+    feedback.textContent = '⚠ Això no sembla un país vàlid. Prova-ho de nou!';
+    return;
+  }
+
+  // 2. Si l'usuari ha encertat el país
+  if (data.correct) {
+    endRound(true, data.correct_country); // O la teva funció de victòria
+    return;
+  }
+
+  // --- NOVA FUNCIONALITAT: IDIOMA CORRECTE ---
+  if (data.guessed_language) {
+    feedback.style.color = '#d4a017'; // Color daurat
+    feedback.textContent = `💡 ¡Gairebé! Has encertat l'idioma, però no és aquest país. Segueix intentant-ho!`;
+  } else {
+    // Resposta fallida normal
+    feedback.style.color = '#c0431b';
+    feedback.textContent = `✗ No és "${answer}".`;
+  }
+
+  // Intent fallit: revelar pista i actualitzar comptadors
+  revealHint(failedAttempts);
+  failedAttempts++;
+  attemptsLeft--;
+  setAttemptsDisplay();
+  
+  // NETEJA L'INPUT PER AL SEGÜENT INTENT
+  document.getElementById('answer-input').value = '';
+
+  if (attemptsLeft === 0) {
+    endRound(false, data.correct_country);
+  } else {
+    // NOMÉS sobreescrivim el feedback si NO havíem encertat l'idioma abans
+    // o si volem afegir el comptador d'intents al missatge anterior.
+    if (!data.guessed_language) {
+      feedback.textContent += ` Et queden ${attemptsLeft} intent${attemptsLeft === 1 ? '' : 's'}!`;
     }
-
-    if (data.correct) {
-      endRound(true, data.correct_country);
-      return;
-    }
-
-    attemptsLeft--;
-    setAttemptsDisplay();
-    document.getElementById('answer-input').value = '';
-
-    if (attemptsLeft === 0) {
-      endRound(false, data.correct_country);
-    } else {
-      feedback.style.color = '#c0431b';
-      feedback.textContent = `✗ No és "${answer}". Et queden ${attemptsLeft} intent${attemptsLeft === 1 ? '' : 's'}!`;
-      document.getElementById('answer-input').focus();
+    document.getElementById('answer-input').focus();
     }
   }
 

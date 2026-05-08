@@ -1,243 +1,228 @@
 PHRASES = [
+    # --- EUROPA ---
     {
-        "phrase": "Bon appétit !",
+        "phrase": "C’est magnifique, on va prendre un verre en terrasse après le travail ce soir ?",
         "language": "Francès",
         "country": "França",
-        "catalan_translation": "Bon profit!",
+        "catalan_translation": "És magnífic, anem a prendre una copa a la terrassa després de la feina aquest vespre?",
         "flag": "🇫🇷",
-        "hint": "La cuina d'aquest país és Patrimoni de la Humanitat"
+        "hint": "Un país on la cultura de la 'terrasse' i la gastronomia defineixen la vida social",
+        "population": "68 milions", "continent": "Europa", "iso_code": "fr",
     },
     {
-        "phrase": "Buon giorno!",
+        "phrase": "Buon giorno a tutti! Che bella giornata per bere un vero espresso in piazza.",
         "language": "Italià",
         "country": "Itàlia",
-        "catalan_translation": "Bon dia!",
+        "catalan_translation": "Bon dia a tothom! Quin dia més bonic per beure un cafè exprés de veritat a la plaça.",
         "flag": "🇮🇹",
-        "hint": "País famós per la pasta, la pizza i el Colosseu"
+        "hint": "Aquí el concepte de 'la bella figura' és una autèntica filosofia de vida estètica",
+        "population": "59 milions", "continent": "Europa", "iso_code": "it",
     },
     {
-        "phrase": "¡Olé!",
+        "phrase": "¡Olé! Mañana nos vamos de cañas y nos quedamos de sobremesa durante muchas horas.",
         "language": "Castellà",
         "country": "Espanya",
-        "catalan_translation": "Molt bé! / Bravo!",
+        "catalan_translation": "Bravo! Demà anem a fer unes canyes i ens quedem de sobretaula durant moltes hores.",
         "flag": "🇪🇸",
-        "hint": "País on el flamenc és art nacional"
+        "hint": "On les reunions familiars acaben hores després d'haver dinat xerrant sense cap pressa",
+        "population": "47 milions", "continent": "Europa", "iso_code": "es",
     },
     {
-        "phrase": "Wunderschön!",
+        "phrase": "Entschuldigung, wissen Sie, ob der Zug heute pünktlich am Berliner Hauptbahnhof ankommen wird?",
         "language": "Alemany",
         "country": "Alemanya",
-        "catalan_translation": "Meravellós!",
+        "catalan_translation": "Disculpi, sap si el tren arribarà puntual avui a l'estació central de Berlín?",
         "flag": "🇩🇪",
-        "hint": "País de la cervesa, les salsitxes i els castells de conte de fades"
+        "hint": "Un lloc on la puntualitat és una norma social gairebé sagrada i molt respectada",
+        "population": "84 milions", "continent": "Europa", "iso_code": "de",
     },
     {
-        "phrase": "Cheers!",
+        "phrase": "I'm terribly sorry to bother you, but could you please show me the way?",
         "language": "Anglès",
         "country": "Anglaterra",
-        "catalan_translation": "Salut!",
+        "catalan_translation": "Em sap greu molestar-lo, però podria si us plau mostrar-me el camí?",
         "flag": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
-        "hint": "País del te, el Big Ben i la pluja constant"
+        "hint": "Un país on demanar disculpes per absolutament tot és la base de la cortesia",
+        "population": "57 milions", "continent": "Europa", "iso_code": "gb",
     },
     {
-        "phrase": "Gezellig!",
-        "language": "Neerlandès",
-        "country": "Països Baixos",
-        "catalan_translation": "Acollidor i agradable!",
-        "flag": "🇳🇱",
-        "hint": "País dels molins de vent, els tulipans i les bicicletes"
-    },
-    {
-        "phrase": "Kanpai!",
-        "language": "Japonès",
-        "country": "Japó",
-        "catalan_translation": "Salut! (brindis)",
-        "flag": "🇯🇵",
-        "hint": "País del sushi, el karate i el mont Fuji"
-    },
-    {
-        "phrase": "Saúde!",
-        "language": "Portuguès",
-        "country": "Portugal",
-        "catalan_translation": "Salut!",
-        "flag": "🇵🇹",
-        "hint": "País del fado, els pastéis de nata i el cap més occidental d'Europa"
-    },
-    {
-        "phrase": "Skål!",
-        "language": "Noruec",
-        "country": "Noruega",
-        "catalan_translation": "Salut!",
-        "flag": "🇳🇴",
-        "hint": "País dels fjords, l'aurora boreal i els vikings"
-    },
-    {
-        "phrase": "Opa!",
-        "language": "Grec",
-        "country": "Grècia",
-        "catalan_translation": "Ale! / Visca!",
-        "flag": "🇬🇷",
-        "hint": "País de l'Acròpolis, els filòsofs antics i el iogurt amb mel"
-    },
-    {
-        "phrase": "Mazel tov!",
-        "language": "Hebreu",
-        "country": "Israel",
-        "catalan_translation": "Enhorabona! / Molta sort!",
-        "flag": "🇮🇱",
-        "hint": "País de Jerusalem, el Mar Mort i el falafel"
-    },
-    {
-        "phrase": "Pura vida!",
-        "language": "Castellà (Costa Rica)",
-        "country": "Costa Rica",
-        "catalan_translation": "Vida pura! / Tot va bé!",
-        "flag": "🇨🇷",
-        "hint": "País sense exèrcit, ple de selva tropical i biodiversitat"
-    },
-    {
-        "phrase": "Ubuntu!",
-        "language": "Zulu",
-        "country": "Sud-àfrica",
-        "catalan_translation": "Soc el que soc gràcies als altres",
-        "flag": "🇿🇦",
-        "hint": "País de Nelson Mandela, el safari i els Big Five"
-    },
-    {
-        "phrase": "Inshallah!",
-        "language": "Àrab",
-        "country": "Aràbia Saudita",
-        "catalan_translation": "Si Déu vol!",
-        "flag": "🇸🇦",
-        "hint": "País del desert, el petroli i la Meca"
-    },
-    {
-        "phrase": "Ay, caramba!",
-        "language": "Castellà (Mèxic)",
-        "country": "Mèxic",
-        "catalan_translation": "Vaja! / Ostres!",
-        "flag": "🇲🇽",
-        "hint": "País dels tacos, els mariachis i les piràmides maies"
-    },
-    {
-        "phrase": "Zdravstvuyte!",
-        "language": "Rus",
-        "country": "Rússia",
-        "catalan_translation": "Bon dia! / Hola (formal)",
-        "flag": "🇷🇺",
-        "hint": "País més gran del món, de la vodka i el ballet"
-    },
-    {
-        "phrase": "Nǐ hǎo!",
-        "language": "Xinès mandarí",
-        "country": "Xina",
-        "catalan_translation": "Hola!",
-        "flag": "🇨🇳",
-        "hint": "País de la Gran Muralla, el te verd i els dracs"
-    },
-    {
-        "phrase": "Namaste!",
-        "language": "Hindi",
-        "country": "Índia",
-        "catalan_translation": "Et saludo / Hola amb respecte",
-        "flag": "🇮🇳",
-        "hint": "País del ioga, el curry i el Taj Mahal"
-    },
-    {
-        "phrase": "Ciao, bella!",
-        "language": "Italià",
-        "country": "Itàlia",
-        "catalan_translation": "Hola, guapa/guapo!",
-        "flag": "🇮🇹",
-        "hint": "País de la moda, l'òpera i el gel·lat artesà"
-    },
-    {
-        "phrase": "Viva Brasil!",
-        "language": "Portuguès (Brasil)",
-        "country": "Brasil",
-        "catalan_translation": "Visca el Brasil!",
-        "flag": "🇧🇷",
-        "hint": "País del carnaval, el futbol i la selva amazònica"
-    },
-    {
-        "phrase": "G'day mate!",
-        "language": "Anglès (australià)",
-        "country": "Austràlia",
-        "catalan_translation": "Hola, amic!",
-        "flag": "🇦🇺",
-        "hint": "País dels cangurs, els koales i l'Òpera de Sydney"
-    },
-    {
-        "phrase": "Merci beaucoup!",
-        "language": "Francès",
-        "country": "França",
-        "catalan_translation": "Moltes gràcies!",
-        "flag": "🇫🇷",
-        "hint": "País de la Torre Eiffel, el vi i el formatge"
-    },
-    {
-        "phrase": "Dziękuję!",
-        "language": "Polonès",
-        "country": "Polònia",
-        "catalan_translation": "Gràcies!",
-        "flag": "🇵🇱",
-        "hint": "País de Chopin, els pierogis i el Castell de Wawel"
-    },
-    {
-        "phrase": "Merhaba!",
-        "language": "Turc",
-        "country": "Turquia",
-        "catalan_translation": "Hola!",
-        "flag": "🇹🇷",
-        "hint": "País que uneix Europa i Àsia, famós pel te i els banyadors turcs"
-    },
-    {
-        "phrase": "Shukran!",
-        "language": "Àrab (Marroc)",
-        "country": "Marroc",
-        "catalan_translation": "Gràcies!",
-        "flag": "🇲🇦",
-        "hint": "País de les medines, el cuscús i els souks de colors"
-    },
-    {
-        "phrase": "Anyoung haseyo!",
-        "language": "Coreà",
-        "country": "Corea del Sud",
-        "catalan_translation": "Hola!",
-        "flag": "🇰🇷",
-        "hint": "País del K-pop, el kimchi i Samsung"
-    },
-    {
-        "phrase": "Tack så mycket!",
+        "phrase": "Tack så mycket! Ska vi ta una fika med kaffe och bullar idag?",
         "language": "Suec",
         "country": "Suècia",
-        "catalan_translation": "Moltes gràcies!",
+        "catalan_translation": "Moltes gràcies! Fem una pausa per al cafè amb brioixos avui?",
         "flag": "🇸🇪",
-        "hint": "País d'IKEA, ABBA i el disseny escandinau"
+        "hint": "Practiquen el 'lagom', que significa ni massa ni poc, tot just l'equilibri perfecte",
+        "population": "10 milions", "continent": "Europa", "iso_code": "se",
+    },
+
+    # --- AMÈRICA (Diferenciant països per argot) ---
+    {
+        "phrase": "¡Hola, parce! ¿Qué más? ¿Cómo va todo por allá en la tierrita hoy?",
+        "language": "Castellà (Colòmbia)",
+        "country": "Colòmbia",
+        "catalan_translation": "Hola, amic! Com va tot per allà a la terroneta avui?",
+        "flag": "🇨🇴",
+        "hint": "Un lloc on tothom et dirà 'parce' i on el millor cafè neix a les muntanyes",
+        "population": "51 milions", "continent": "Amèrica del Sud", "iso_code": "co",
     },
     {
-        "phrase": "Efcharistó!",
-        "language": "Grec",
-        "country": "Grècia",
-        "catalan_translation": "Gràcies!",
-        "flag": "🇬🇷",
-        "hint": "País de les illes blanques, l'oliva i els déus olímpics"
-    },
-    {
-        "phrase": "Bienvenidos!",
+        "phrase": "Che, ¿viste lo que pasó ayer en la cancha? Fue un partido realmente increíble.",
         "language": "Castellà (Argentina)",
         "country": "Argentina",
-        "catalan_translation": "Benvinguts!",
+        "catalan_translation": "Escolta, vas veure què va passar ahir al camp? Va ser un partit increïble.",
         "flag": "🇦🇷",
-        "hint": "País del tango, el mate i Lionel Messi"
+        "hint": "En aquest país el 'voseo' és la norma i el mate és l'eix social",
+        "population": "46 milions", "continent": "Amèrica del Sud", "iso_code": "ar",
     },
     {
-        "phrase": "Karibu!",
+        "phrase": "¡Órale güey! No te pases de lanza con esa broma tan pesada que hiciste.",
+        "language": "Castellà (Mèxic)",
+        "country": "Mèxic",
+        "catalan_translation": "Vinga, noi! No et passis de la ratlla amb aquesta broma tan pesada que has fet.",
+        "flag": "🇲🇽",
+        "hint": "Si et diuen que el menjar pica 'poquito', prepara't per a una experiència volcànica",
+        "population": "130 milions", "continent": "Amèrica del Nord", "iso_code": "mx",
+    },
+    {
+        "phrase": "Pura vida, mae! Todo bien por aquí, disfrutando de la selva y la playa.",
+        "language": "Castellà (Costa Rica)",
+        "country": "Costa Rica",
+        "catalan_translation": "Tot va genial, noi! Tot bé per aquí, gaudint de la selva i la platja.",
+        "flag": "🇨🇷",
+        "hint": "Els seus habitants s'anomenen 'ticos' i viuen en un país que no té exèrcit",
+        "population": "5 milions", "continent": "Amèrica Central", "iso_code": "cr",
+    },
+    {
+        "phrase": "¡Oye, po! La wea está súper fome, mejor vamos a buscar algo más entretenido.",
+        "language": "Castellà (Xile)",
+        "country": "Xile",
+        "catalan_translation": "Escolta! Això és molt avorrit, millor anem a buscar alguna cosa més divertida.",
+        "flag": "🇨🇱",
+        "hint": "Utilitzen la paraula 'wea' per a tot i és el país més llarg del món",
+        "population": "19 milions", "continent": "Amèrica del Sud", "iso_code": "cl",
+    },
+    {
+        "phrase": "Oi, tudo bem? Uai, você não sabia que eu vinha visitar você hoje cedo?",
+        "language": "Portuguès (Brasil)",
+        "country": "Brasil",
+        "catalan_translation": "Hola, tot bé? Carai, no sabies que venia a visitar-te avui d'hora?",
+        "flag": "🇧🇷",
+        "hint": "A la regió de Minas Gerais fan servir 'uai' per expressar qualsevol tipus de sorpresa",
+        "population": "215 milions", "continent": "Amèrica del Sud", "iso_code": "br",
+    },
+    {
+        "phrase": "¡Ya tu sabes, asere! Vamos a pasar un rato bien chévere con la música.",
+        "language": "Castellà (Cuba)",
+        "country": "Cuba",
+        "catalan_translation": "Ja ho saps, col·lega! Anem a passar una estona ben xula amb la música.",
+        "flag": "🇨🇺",
+        "hint": "Et saludaran amb un 'asere, ¿qué bolá?' en aquesta illa del Carib",
+        "population": "11 milions", "continent": "Amèrica Central", "iso_code": "cu",
+    },
+
+    # --- ÀSIA I OCEANIA ---
+    {
+        "phrase": "Kon'nichiwa! O-genki desu ka? Nihon no sakura wa haru ni totemo kirei desu.",
+        "language": "Japonès",
+        "country": "Japó",
+        "catalan_translation": "Hola! Com estàs? Els cirerers del Japó a la primavera són molt bonics.",
+        "flag": "🇯🇵",
+        "hint": "Una societat que valora el silenci, l'ordre i l'harmonia grupal per sobre de tot",
+        "population": "125 milions", "continent": "Àsia", "iso_code": "jp",
+    },
+    {
+        "phrase": "Anyoung haseyo! Kimchi jinjja masisseoyo, kamsahamnida por este delicioso banquete que habéis preparado.",
+        "language": "Coreà",
+        "country": "Corea del Sud",
+        "catalan_translation": "Hola! El kimchi és realment bo, gràcies per aquest banquet deliciós que heu preparat.",
+        "flag": "🇰🇷",
+        "hint": "L'edat i l'estatus determinen estrictament com has de conjugar els verbs en parlar",
+        "population": "52 milions", "continent": "Àsia", "iso_code": "kr",
+    },
+    {
+        "phrase": "Nǐ hǎo! Nǐ chī fàn le ma? Zhège dìfāng hěn piàoliang yeyi.",
+        "language": "Xinès mandarí",
+        "country": "Xina",
+        "catalan_translation": "Hola! Ja has menjat? Aquest lloc és realment molt bonic.",
+        "flag": "🇨🇳",
+        "hint": "Preguntar 'si ja has menjat' és la manera tradicional de saludar els amics propers",
+        "population": "1.400 milions", "continent": "Àsia", "iso_code": "cn",
+    },
+    {
+        "phrase": "G'day mate! Are you coming to the barbie this afternoon at the beach?",
+        "language": "Anglès (australià)",
+        "country": "Austràlia",
+        "catalan_translation": "Bon dia, amic! Vindràs a la barbacoa aquesta tarda a la platja?",
+        "flag": "🇦🇺",
+        "hint": "Són famosos per escurçar paraules: 'barbie' (barbacoa), 'brekkie' (esmorzar) o 'straya' (el seu país)",
+        "population": "26 milions", "continent": "Oceania", "iso_code": "au",
+    },
+    {
+        "phrase": "Sawadee krap! Yin dee tee dai roo juk. Thailand suay mak mak.",
+        "language": "Tai",
+        "country": "Tailàndia",
+        "catalan_translation": "Hola! Encantat de conèixer-te. Tailàndia és molt i molt maca.",
+        "flag": "🇹🇭",
+        "hint": "Conegut com 'el país del somriure' per l'amabilitat extrema de la seva gent",
+        "population": "71 milions", "continent": "Àsia", "iso_code": "th",
+    },
+
+    # --- ÀFRICA I ORIENT MITJÀ ---
+    {
+        "phrase": "Shukran! El chai con menta está muy rico, muchas gracias por vuestra hospitalidad.",
+        "language": "Àrab",
+        "country": "Marroc",
+        "catalan_translation": "Gràcies! El te amb menta és molt bo, moltes gràcies per la vostra hospitalitat.",
+        "flag": "🇲🇦",
+        "hint": "L'hospitalitat es demostra servint el te des de molta alçada per crear bromera",
+        "population": "37 milions", "continent": "Àfrica", "iso_code": "ma",
+    },
+    {
+        "phrase": "Ubuntu! Soy porque nosotros somos, trabajemos juntos por el futuro de nuestra nación.",
+        "language": "Zulu / Anglès",
+        "country": "Sud-àfrica",
+        "catalan_translation": "Soc perquè nosaltres som, treballem junts pel futur de la nostra nació.",
+        "flag": "🇿🇦",
+        "hint": "L'anomenada 'Nació de l'Arc de Sant Martí' té fins a 11 llengües oficials",
+        "population": "60 milions", "continent": "Àfrica", "iso_code": "za",
+    },
+    {
+        "phrase": "Hakuna matata! Todo va a salir bien, no te preocupes por los problemas.",
         "language": "Swahili",
         "country": "Kènia",
-        "catalan_translation": "Benvingut!",
+        "catalan_translation": "Cap problema! Tot sortirà bé, no et preocupis pels problemes.",
         "flag": "🇰🇪",
-        "hint": "País de la savana, els masais i el maratón"
+        "hint": "La frase 'hakuna matata' és realment part del vocabulari quotidià en aquest país",
+        "population": "55 milions", "continent": "Àfrica", "iso_code": "ke",
+    },
+    {
+        "phrase": "Selam! Dehna nesh? Ethiopia betam konjo natch. Enes tegnen.",
+        "language": "Amhàric",
+        "country": "Etiòpia",
+        "catalan_translation": "Hola! Com estàs? Etiòpia és molt bonica. Som-hi.",
+        "flag": "🇪🇹",
+        "hint": "L'únic país africà que mai va ser colonitzat i té el seu propi calendari",
+        "population": "123 milions", "continent": "Àfrica", "iso_code": "et",
+    },
+
+    # --- ALTRES REGIONS ---
+    {
+        "phrase": "Privyet! Kak dela? Segodnya ochen' kholodno zdes' v gorode, pravda?",
+        "language": "Rus",
+        "country": "Rússia",
+        "catalan_translation": "Hola! Com va? Avui fa molt de fred aquí a la ciutat, oi?",
+        "flag": "🇷🇺",
+        "hint": "El país més gran del món, on la gent rarament somriu als desconeguts pel carrer",
+        "population": "144 milions", "continent": "Europa/Àsia", "iso_code": "ru",
+    },
+    {
+        "phrase": "Merhabalar! Nasilsiniz? Turkiye cok guzel bir ulke, her sey harika.",
+        "language": "Turc",
+        "country": "Turquia",
+        "catalan_translation": "Hola! Com esteu? Turquia és un país molt bonic, tot és fantàstic.",
+        "flag": "🇹🇷",
+        "hint": "Un pont geogràfic i cultural entre Europa i Àsia dividit pel Bòsfor",
+        "population": "85 milions", "continent": "Àsia/Europa", "iso_code": "tr",
     },
 ]
 
